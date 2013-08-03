@@ -19,7 +19,7 @@
 		options : {
 			icon : "link",
 			hoverIcon : "",
-			outerClass : ""
+			wrapperClass : ""
 		},
 
 		_create : function() {
@@ -28,7 +28,7 @@
 			// Set options based on options that were passed.
 			this.options.icon = (ops.icon) ? ops.icon : this.options.icon;
 			this.options.hoverIcon = (ops.hoverIcon) ? ops.hoverIcon : this.options.hoverIcon;
-			this.options.outerClass = (ops.outerClass) ? ops.outerClass : this.options.outerClass;
+			this.options.wrapperClass = (ops.wrapperClass) ? ops.wrapperClass : this.options.wrapperClass;
 
 			// Add the icon classes
 			el.addClass("ui-icon").addClass(prefix + this.options.icon);
@@ -36,7 +36,7 @@
 			// Wrap it in an outer span; this is for positioning and to apply the active state
 			el.wrap("<span style='border: 0;' />");
 			this.wrapper = el.parent();
-			this.wrapper.addClass(this.options.outerClass);
+			this.wrapper.addClass(this.options.wrapperClass);
 			
 			// Bindings for hovering
 			this.wrapper.bind("mouseover", function() {
@@ -74,8 +74,8 @@
 					break;
 				
 				// Update the wrapper class
-				case "outerClass":
-					this.wrapper.removeClass(this.options.outerClass);
+				case "wrapperClass":
+					this.wrapper.removeClass(this.options.wrapperClass);
 					this.wrapper.addClass(value);
 					break;
 				
