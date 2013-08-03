@@ -81,7 +81,7 @@
 				
 				// There are no other options
 				default:
-					throw Error("Invalid Option!");
+					throw new Error("Invalid Option!");
 			}
 			
 			this.options[key] = value;
