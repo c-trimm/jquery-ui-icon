@@ -1,3 +1,6 @@
+// jquery-ui-icon
+// Author: Casey Trimm
+// Created: May 2010
 (function( $ ) {
 	$.widget("ui.icon", {
 		options : {
