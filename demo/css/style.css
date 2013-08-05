@@ -17,9 +17,15 @@ h2 {
 	margin-top: 10px;
 }
 
+h3 {
+	margin: 30px auto 0 auto;
+	width: 833px;
+	font-size: 2em;
+}
+
 .outer {
 	width: 378px;
-	margin: 50px auto 50px auto;
+	margin: 50px auto 0 auto;
 	text-align: center;
 }
 
@@ -58,17 +64,17 @@ label {
 	vertical-align: middle;
 }
 
-.usage {
+.code-container {
 	width: 100%;
 	text-align: left;
-	margin: 20px auto 0 auto;
+	margin: 0 auto 20px auto;
 	background-color: white;
 }
 
 .syntaxhighlighter {
 	padding: 10px 0;
-	margin: auto !important;
-	width: 644px !important;
+	width: 840px !important;
+	margin: 0 auto !important;
 }
 
 pre {
