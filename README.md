@@ -22,7 +22,7 @@ Usage:
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/jquery.ui.icon.js"></script>
 
-<!-- Add span for icon somehwere in your page -->
+<!-- Add span for icon somewhere in your page -->
 <span id="icon"></span>
 ```
 
