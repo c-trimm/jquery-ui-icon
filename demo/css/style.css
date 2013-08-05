@@ -12,6 +12,11 @@ h1 {
 	font-size: 5em;
 }
 
+h2 {
+	text-align: center;
+	margin-top: 10px;
+}
+
 .outer {
 	width: 378px;
 	margin: 50px auto 50px auto;
@@ -23,7 +28,7 @@ h1 {
 	height: 16px;
 	display: inline-block;
 	vertical-align: middle;
-	padding: 31px;
+	padding: 27px;
 	background: #f5f8f9 url(images/ui-bg_inset-hard_100_f5f8f9_1x100.png);
 	border: 2px solid #95b5c0 !important;
 	margin-bottom: 10px;
@@ -48,7 +53,9 @@ label {
 }
 
 .dropdown {
-	margin: 5px 0 5px 5px;
+	margin: 0;
+	margin-left: 5px;
+	vertical-align: middle;
 }
 
 .usage {
@@ -61,7 +68,7 @@ label {
 .syntaxhighlighter {
 	padding: 10px 0;
 	margin: auto !important;
-	width: 700px !important;
+	width: 644px !important;
 }
 
 pre {
@@ -76,143 +83,192 @@ pre {
 	font-weight: 800;
 }
 
-/*
- * Copyright (c) 2012-2013 Thibaut Courouble
- * http://www.cssflow.com
- * Licensed under the MIT License
- *
- * Sass/SCSS source: http://goo.gl/qEV26
- * PSD by Hemn Chawroka: http://goo.gl/nXZHJ
- */
-.dropdown {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  height: 28px;
-  width: 150px;
-  background: #f2f2f2;
-  border: 1px solid;
-  border-color: white #f7f7f7 whitesmoke;
-  border-radius: 3px;
-  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
-  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
-  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.06));
-  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.06));
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+
+
+
+
+
+
+
+
+
+
+/* 
+  *** RESET SELECT   
+*/
+select {
+  -webkit-appearance:     button;
+  -webkit-box-sizing:     content-box;
+  -moz-box-sizing:        content-box;
+  box-sizing:             content-box;
+  border:                 1px solid #aaa;
+  margin:                 0;
+  padding:                0;
 }
 
-.dropdown:before, .dropdown:after {
-  content: '';
-  position: absolute;
-  z-index: 2;
-  top: 9px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 4px dashed;
-  border-color: #888888 transparent;
-  pointer-events: none;
+/* 
+  *** SELECT BASIC STYLING
+  - It's em based, so will scale with the container font size
+  - this style rule includes IE8 (which doesn't gain the better gradients/arrows, but does get consistent metrics and font sizes)
+*/
+select {
+  display:                inline-block;
+  vertical-align:         baseline;
+  height:                 1.4em;
+  margin:                 2px;
+  padding:                0.3em 0.6em 0.3em 0.6em;
+  background:             #fff;
+  border:                 1px solid #aaa;
+  border-radius:          0.3em;
+  font-family:            "Lucida Grande",helvetica,arial,sans-serif; /* note trying to match OS sys font */
+  font-size:              0.85em;
+  overflow:               hidden;
+  
+  -webkit-transition:     box-shadow 200ms, border-color 200ms;
+  -moz-transition:        box-shadow 200ms, border-color 200ms;
+  transition:             box-shadow 200ms, border-color 200ms;
+  background-color:       #f2f2f2;
+  border-color:           #fff;
+  box-shadow:             inset 0 0.9em 0 #fff, 0px 1px 3px 0 rgba(0,0,0,0.6);
+  text-shadow:            0 1px 0 #fff;
+}
+option {
+  text-shadow:            none;
 }
 
-.dropdown:before {
-  border-bottom-style: solid;
-  border-top: none;
+
+/* hover - note it doesn't happen on touch devices, as that can give inconsistent results */
+select:hover {
+  box-shadow:             inset 0 0.9em 0 #fff, 0px 1px 3px 0 rgba(0,0,0,0.6), 0 0 0 3px #a6d4f0;
+}
+/* focus */
+select:focus {
+  outline:                none;
+  border-color:           #6cf;
+  box-shadow:             inset 0 0.9em 0 #fff, 0px 1px 3px 0 rgba(0,0,0,0.6), 0 0 4px #6cf;
+}
+/* disabled */
+select:disabled {
+  color:                  #ccc;
+}
+/* errors */
+select.error {
+  color:                  #bf212e;
+  border-color:           #bf212e;
 }
 
-.dropdown:after {
-  margin-top: 7px;
-  border-top-style: solid;
-  border-bottom: none;
+/* 
+  *** IE6/IE7 ***
+  - Almost no styling possible, so cancel out the extra stuff and try to even out the metrics
+*/
+select {
+  *height:                auto;
+  *padding:               auto;
+  *margin:                0.3em 2px 0.3em 3px;
 }
 
-.dropdown-select {
-  position: relative;
-  width: 130%;
-  margin: 0;
-  padding: 6px 8px 6px 10px;
-  height: 28px;
-  line-height: 14px;
-  font-size: 12px;
-  color: #62717a;
-  text-shadow: 0 1px white;
-  background: #f2f2f2; /* Fallback for IE 8 */
-  background: rgba(0, 0, 0, 0) !important; /* "transparent" doesn't work with Opera */
-  border: 0;
-  border-radius: 0;
-  -webkit-appearance: none;
-}
 
-.dropdown-select:focus {
-  z-index: 3;
-  width: 100%;
-  color: #394349;
-  outline: 2px solid #49aff2;
-  outline: 2px solid -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
-
-.dropdown-select > option {
-  margin: 3px;
-  padding: 6px 8px;
-  text-shadow: none;
-  background: #f2f2f2;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-/* Fix for IE 8 putting the arrows behind the select element. */
-
-.lt-ie9 .dropdown {
-  z-index: 1;
-}
-
-.lt-ie9 .dropdown-select {
-  z-index: -1;
-}
-
-.lt-ie9 .dropdown-select:focus {
-  z-index: 3;
-}
-
-/* Dirty fix for Firefox adding padding where it shouldn't. */
-
-@-moz-document url-prefix() {
-  .dropdown-select {
-    padding-left: 6px;
+/* 
+  *** IE9/10 ***
+  - Box shadow behaves differently in IE9/IE10, so they get a tweak to spill the shadow over the top
+  - IE10 allows some tweaking of the drop arrow, which looks nice (and is consistent with the native control). So we use that instead of rebuilding the arrow.
+  - IE9, like Firefox, doesn't allow styling of the drop arrow. We could use a wrap/pseudo element to patch it, but where FF allows you to set pointer-events:none and make the patch "click-transparent", IE9 has no such capability. We could fix that by using a delegated javascript event to get around a deadspace on the click area, but weighing up adding a javascript work-around against a browser share that is falling due to Win7 auto-updating to IE10, we decided to leave the slightly ugly arrowed (but styled and dimensionally consistent) select box as the control.
+*/
+@media screen and (min-width:0\0) {
+  select,
+  select:disabled,
+  select:disabled:hover {
+    box-shadow:           inset 0 0.9em 0 #fff, 0px 1px 6px 0 rgba(0,0,0,0.6);
+  }
+  select::-ms-expand {
+    background:           transparent;
+    border:               none;
+    width:                12px;
+    padding-left:         5px;
+  }
+  /* hover */
+  select:hover {
+    box-shadow:           inset 0 0.9em 0 #fff, 0px 1px 6px 0 rgba(0,0,0,0.6), 0 0 0 3px #a6d4f0;
+  }
+  /* focus */
+  select:focus {
+    box-shadow:           inset 0 0.9em 0 #fff, 0px 1px 6px 0 rgba(0,0,0,0.6), 0 0 4px #6cf;
   }
 }
 
-.dropdown-dark {
-  background: #444;
-  border-color: #111111 #0a0a0a black;
-  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
-  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
-  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.4));
-  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.4));
-  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+
+
+/* 
+  *** FIREFOX ***
+  - Styling gives a nasty drop arrow (totally untouchable by CSS). So unfortunely a wrap is needed to patch over the arrow.
+  - The wrap is not strictly needed, but does give a nicer UI.
+  - The arrow glyph is inconsistent in size between OS's, so we try to use a known icon webfont first
+*/
+@-moz-document url-prefix() {
+  option {
+    padding-right:        10px;  /* not strictly necessary, but gives a little more space between text/arrow when unwrapped */
+  }
+  .us-form-select-wrap {
+    position:             relative;
+    display:              inline-block;
+    vertical-align:       baseline;
+  }
+  .us-form-select-wrap:before {
+    content:              '';
+    position:             absolute;
+    right:                0.5em;
+    top:                  0.3em;
+    bottom:               0.3em;
+    width:                22px;
+    background:           #f2f2f2;
+    border-top:           0.7em solid #fff;
+    pointer-events:       none;
+  }
+  .us-form-select-wrap:after {
+    content:              '\25bc';
+    position:             absolute;
+    right:                5px;
+    top:                  0.8em;
+    bottom:               0.8em;
+    font-size:            0.6em;
+    font-family:          "uswitch-icon",helvetica,arial,sans-serif;
+    line-height:          1;
+    padding:              0.5em 4px 0;
+    color:                #999;
+    border-left:          1px solid #fff;
+    box-shadow:           -1px 0 0 #ddd;
+    text-shadow:          0 1px 0 #fff;
+    pointer-events:       none;
+  }
 }
 
-.dropdown-dark:before {
-  border-bottom-color: #aaa;
-}
 
-.dropdown-dark:after {
-  border-top-color: #aaa;
-}
 
-.dropdown-dark .dropdown-select {
-  color: #aaa;
-  text-shadow: 0 1px black;
-  background: #444;  /* Fallback for IE 8 */
-}
-
-.dropdown-dark .dropdown-select:focus {
-  color: #ccc;
-}
-
-.dropdown-dark .dropdown-select > option {
-  background: #444;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+/* 
+  *** WEBKIT ***
+  - Select box's style can be completely reset (without arrow or padding) by setting webkit-apearance: button
+  - The padding to allow space for the arrow needs to be added back in
+  - The arrow needs to be added back in. Ideally we'd do the the same as the Firefox wrap, but because <SELECT> doesn't support CSS pseudo-elements, it's done via background image instead - using inlined PNG/SVG to reduce HTTP calls
+  - Using the nice inset white shadow is not possible because it obscures the background image arrow (it's replaced with a gradient)
+*/
+@media all and (-webkit-min-device-pixel-ratio: 0) {
+  select {
+    padding-right:        30px;
+    -webkit-box-shadow:   0px 1px 3px 0 rgba(0,0,0,0.6);
+    box-shadow:           0px 1px 3px 0 rgba(0,0,0,0.6);
+    background-image:     url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAAzElEQVRIDWP8//8/Ay0BE8zws2fPgmyium1wC2AWUZsetYBgiI4GEcEgYiGoAqqgq6trGZAZia4emFGXlZeXR6OLw/hEx8G/f/+ygYY9hWkE0UD+IyCVhSyGzibagoqKiveMjIyJIHNBhgAN/wekYoGu/wji4wJEWwAyoKysbDfQ4ClQw7qAhh/CZTBMnOg4gGl4+fJluYSEhNC9e/fqYGJ4aaCLQN5lOHPmDJACAzAfyKIKTVIQ4XUpDslRC3AEDEJ46AcRIyg50hIAANnugKRDswA6AAAAAElFTkSuQmCC"), -webkit-gradient(linear, left top, left bottom, color-stop(41%, #fff), color-stop(41%, #f1f1f1), color-stop(100%, #f2f2f2)); /* for older Android 2 with old gradient syntax and PNG image */
+    background-image:     url("data:image/svg+xml;utf8,<svg width='24px' height='22px' version='1.1' xmlns='http://www.w3.org/2000/svg'><title>select-arrow</title><g id='arrow-group' fill='rgb(223,223,223)' fill-rule='evenodd'><path d='M10,9 L13.4690265,14 L17,9 L10,9 Z M10,9' id='arrow' fill='rgb(155,155,155)'></path><path d='M2,1 L2,21 L3,21 L3,1 L2,1 Z M2,1' id='dark-line' fill='rgb(213,213,213)'></path><path d='M3,1 L3,21 L4,21 L4,1 L3,1 Z M3,1' id='light-line' fill='rgb(254,255,255)'></path></g></svg>"), -webkit-linear-gradient(-90deg, #fff 41%, #f1f1f1 41%, #f2f2f2 100%); /* for android4+/iOS/Chrome/Safari with -webkit gradient syntax and SVG image */
+    background-repeat:    no-repeat, repeat;
+    background-position:  100% 50%, 0 0;
+  }
+  /* hover */
+  select:hover {
+    -webkit-box-shadow:   0px 1px 3px 0 rgba(0,0,0,0.6), 0 0 0 3px #a6d4f0;
+    box-shadow:           0px 1px 3px 0 rgba(0,0,0,0.6), 0 0 0 3px #a6d4f0;
+  }
+  /* focus */
+  select:focus {
+    -webkit-box-shadow:   0px 1px 3px 0 rgba(0,0,0,0.6), 0 0 4px #6cf;
+    box-shadow:           0px 1px 3px 0 rgba(0,0,0,0.6), 0 0 4px #6cf;
+  }
 }
